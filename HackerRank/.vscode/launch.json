@@ -2,11 +2,12 @@
     "version": "0.2.0",
     "configurations": [
       {
+        "env": { "MYFILE": "${workspaceFolder}\\ProblemSolving\\Implementation\\NonDevisibleSubset" },
         "name": "C/C++: g++ build and debug active file",
         "type": "cppdbg",
         "request": "launch",
-        "program": "${workspaceFolder}\\CPP\\Strings\\out.exe",
-        "args": ["<", "${workspaceFolder}\\CPP\\Strings\\AttributeParserInput.txt"],
+        "program": "${workspaceFolder}\\out.exe",
+        "args": ["<", "${MYFILE}Input.txt"],
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}",
         "environment": [],

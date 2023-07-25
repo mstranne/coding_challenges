@@ -7,9 +7,9 @@
             "command": "C:\\msys64\\mingw64\\bin\\g++",
             "args": [
                 "-g",
-                "${workspaceFolder}\\CPP\\Strings\\AttributeParser.cpp",
+                "${MYFILE}.cpp",
                 "-o",
-                "${workspaceFolder}\\CPP\\Strings\\out.exe"
+                "${workspaceFolder}\\out.exe"
             ],
             "options": {
                 //"cwd": "/usr/bin"
