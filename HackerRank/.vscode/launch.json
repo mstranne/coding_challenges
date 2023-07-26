@@ -2,12 +2,12 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "env": { "MYFILE": "${workspaceFolder}\\ProblemSolving\\Implementation\\NonDevisibleSubset" },
         "name": "C/C++: g++ build and debug active file",
         "type": "cppdbg",
         "request": "launch",
+        //"env": { "MYFILE": "${workspaceFolder}\\ProblemSolving\\Implementation\\NonDevisibleSubset" },
         "program": "${workspaceFolder}\\out.exe",
-        "args": ["<", "${MYFILE}Input.txt"],
+        "args": ["<", "${workspaceFolder}\\ProblemSolving\\Implementation\\NonDevisibleSubsetInput.txt"],
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}",
         "environment": [],
