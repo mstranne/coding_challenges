@@ -24,6 +24,8 @@ vector<string> split(const string &);
  *  2. INTEGER_ARRAY s
  */
 
+
+//unnoetig, hab des etwas falsch verstanden
 vector<vector<int>> GenCombinations(const unsigned int N, const unsigned int K) {
     vector<vector<int>> idxs;
     if(N == K){
@@ -75,89 +77,20 @@ bool check_condition(vector<int> s, vector<int> idxs, int k){
 }
 
 int nonDivisibleSubset(int k, vector<int> s) {
-    int N = s.size();
-    int curr_max = 0;
+    vector<int> count(k);
+    int result=0;
 
-
-    vector<int> idx;
-    for(int xi = 0; xi < N; xi++)
-        idx.push_back(xi);
-    if(check_condition(s, idx, k))
-                return N;
-    
-    //Top Down
-    for(int m = N-1; m > 1; m--){
-        unsigned int *ka = new unsigned int [m];  //dynamically allocate an array of UINTs
-        unsigned int ki = m-1;                    //Point ki to the last elemet of the array
-        ka[ki] = N-1;                             //Prime the last elemet of the array.
-        
-
-        bool contin = true;
-        while (contin) {
-            unsigned int tmp = ka[ki];  //Optimization to prevent reading ka[ki] repeatedly
-
-            while (ki)                  //Fill to the left with consecutive descending values (blue squares)
-                ka[--ki] = --tmp;
-            
-            idx.clear();
-            for(int xi = 0; xi < m; xi++)
-                idx.push_back(ka[xi]);
-            if(check_condition(s, idx, k))
-                return k;
-
-        
-            while (--ka[ki] == ki) {    //Decrement and check if the resulting value equals the index (bright green squares)
-                //OutputArrayChar(ka, K, alphabet);
-                idx.clear();
-                for(int xi = 0; xi < m; xi++)
-                    idx.push_back(ka[xi]);
-                if(check_condition(s, idx, k))
-                    return k;
-
-                if (++ki == m) {      //Exit condition (all of the values in the array are flush to the left)
-                    delete[] ka;
-                    contin = false;
-                    break;
-                }                   
-            }
-        }
+    //rewrite -> (a+b)/k = a/k + b/k
+    for(int i=0;i<s.size();i++){
+        count[s[i]%k]++;            
     }
-
-    return 0;
-
-    //Bottom UP
-    queue<vector<int>> to_check;
-
-    for(int i = 0; i < N-1; i++){
-        for(int j = i+1; j < N; j++){
-            vector<int> idx = {i,j}; 
-            to_check.push(idx);
-        }
+    for(int i=0;i<=k/2;i++){
+        if(i==(k-i)%k)  
+            result += min(count[i],1);
+        else 
+            result += max(count[i],count[k-i]);
     }
-
-    while(to_check.size() > 0){
-        vector<int> current_idxs = to_check.front();
-        to_check.pop();
-
-        if(check_condition(s, current_idxs, k)){
-            if(curr_max < current_idxs.size())
-                curr_max = current_idxs.size();
-
-            for(int i = 0; i < N; i++){
-                if (find(current_idxs.begin(), current_idxs.end(), i) != current_idxs.end()) {
-                    
-                } else {
-                    vector<int> to_add = current_idxs;
-                    to_add.push_back(i);
-                    to_check.push(to_add);
-                    // ACHTUNG STILL DOPPELTE !!!!
-                }
-            }
-        }
-
-    }
-
-    return curr_max;
+    return result;
 }
 
 int main()
