@@ -87,7 +87,7 @@ class BigInt {
                     cout << chunks[i];
                     first = false;
                 } else {
-                    for(int j = chunk_size/10; j > 0; j = j/10){
+                    for(int j = chunk_size/10; j > 9; j = j/10){
                         if(chunks[i] < j)
                             cout << "0";
                     }
