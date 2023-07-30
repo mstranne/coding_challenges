@@ -30,24 +30,59 @@ vector<string> split(const string &);
 int queensAttack(int n, int k, int r_q, int c_q, vector<vector<int>> obstacles) {
 
     //check if point on line
-    // y = mx + b -> b = y - mx
-    // where m is given as the slope, so in our case (1/1, 0/1, 0/-1, 1/0, -1/0, -1/-1, 1/-1, -1/1)
+    // Ax + By - C = 0
+    // -> A = (y1 - y2)
+    // -> B = (x2 - x1)
+    // -> C = x1y2 - x2y1 
 
-    float m[] = {1/1, 0/1, 0/-1, 1/0, -1/0, -1/-1, 1/-1, -1/1};
-    float b[8];
+    
 
-    for(int i = 0; i < 8; i++){
-        b[i] = r_q - m[i]*c_q;
-    } 
-
-    int min_dis[8];
+    //l1 nach rechts, und dann gegen uhrzeiger sin? also l5 <-
+    int min_dis[8] = {
+        n-r_q,
+        min(n-r_q, n-c_q),
+        n-c_q,
+        min(n-r_q, c_q-1),
+        c_q-1,
+        min(r_q-1, c_q-1),
+        r_q-1,
+        min(r_q-1, n-c_q)
+    };
+    
     for(auto o : obstacles){
-        
+        if( (o[1] - c_q) == 0){
+            //cout << "obst in senk" << endl;
+            if(o[0] > r_q){
+                min_dis[0] = min(min_dis[0], o[0]-r_q-1);
+            } else {
+                min_dis[4] = min(min_dis[4], r_q-o[0]-1);
+            }
+        } else if( (o[0] - r_q) == 0){
+            //cout << "obst in wag" << endl;
+            if(o[1] > c_q){
+                min_dis[2] = min(min_dis[2], o[1]-c_q-1);
+            } else {
+                min_dis[6] = min(min_dis[6], c_q-o[1]-1);
+            }
+        } else if(abs(o[1] - c_q) == abs(o[0] - r_q)) {
+            //cout << "obst in diag" << endl;
+            if(o[1] > c_q && o[0] > r_q){
+                min_dis[1] = min(min_dis[1], o[1] - c_q-1);
+            } else if(o[0] < c_q && o[1] > r_q) {
+                min_dis[3] = min(min_dis[3], c_q - o[1]-1);
+            } else if(o[0] < c_q && o[1] < r_q) {
+                min_dis[5] = min(min_dis[5], c_q - o[1]-1);
+            } else{
+                min_dis[7] = min(min_dis[7], o[1] - c_q-1);
+            }
+        }
     }
 
+    int res = 0;
+    for(auto dis : min_dis)
+        res += dis;
 
-
-    return 0;
+    return res;
 }
 
 int main()
