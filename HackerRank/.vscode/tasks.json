@@ -7,7 +7,7 @@
             "command": "C:\\msys64\\mingw64\\bin\\g++",
             "args": [
                 "-g",
-                "${workspaceFolder}\\ProblemSolving\\Implementation\\QueenAttack2.cpp",
+                "${workspaceFolder}\\ProblemSolving\\Challanges\\OrganizingContainersOfBalls.cpp",
                 "-o",
                 "${workspaceFolder}\\out.exe"
             ],
