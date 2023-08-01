@@ -24,8 +24,36 @@ vector<string> split(const string &);
  */
 
 string organizingContainers(vector<vector<int>> container) {
+    // The challange is, you get N containers filled with N different kind of balls
+    // each container is filled with different balls, but can contain different amount of balls lets say mi
+    // it is only possilbe to sort via 1-1 swap from different containers
+    // solution is easy, since we onlz need to say if its possible or not
+    // if there are x amount of ni type balls overall, there must also be one container with
+    // x amount of balls at the beginning, since we can never change the amount of balls
+    // so calc row and col sums and check if each row sum has one equal col sum
+    // deep back in my brain I remember there was a specific name if a matrix fulfills this
+    // Permutation matrix ? TODO check in stochastik script
 
-    return "";
+    int len = container.size();
+    vector<int> t(len, 0);
+    vector<int> C(len, 0);
+
+    for(int n = 0; n < len; n++){
+        for(int m = 0; m < len; m++){
+            t[m] += container[n][m];
+            C[n] += container[n][m];
+        }
+    }
+    sort(t.begin(), t.end());
+    sort(C.begin(), C.end());
+
+    for(int i = 0; i < len; i++){
+        if(t[i] != C[i]) {
+            return "Impossible";
+        }
+    }
+
+    return "Possible";
 }
 
 int main()
