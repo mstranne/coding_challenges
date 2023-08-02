@@ -7,7 +7,7 @@
             "command": "C:\\msys64\\mingw64\\bin\\g++",
             "args": [
                 "-g",
-                "${workspaceFolder}\\ProblemSolving\\Challanges\\OrganizingContainersOfBalls.cpp",
+                "${workspaceFolder}\\ProblemSolving\\Challanges\\BearAndSteadyGene.cpp",
                 "-o",
                 "${workspaceFolder}\\out.exe"
             ],
