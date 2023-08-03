@@ -1,4 +1,5 @@
-//https://www.hackerrank.com/contests/projecteuler/challenges/euler001/problem?isFullScreen=true
+//https://www.hackerrank.com/contests/projecteuler/challenges/euler003/problem?isFullScreen=true
+
 #include <string>
 #include <vector>
 #include <fstream>
@@ -42,7 +43,7 @@ vector<string> split(const string &str) {
     return tokens;
 }
 
-//TODO getten timeout bei 1 testcase
+
 int main()
 {
     string t_temp;
@@ -50,60 +51,12 @@ int main()
 
     int t = stoi(ltrim(rtrim(t_temp)));
 
-    vector<int> n_;
     for (int t_itr = 0; t_itr < t; t_itr++) {
         string n_temp;
         getline(cin, n_temp);
 
-        int n = stoi(ltrim(rtrim(n_temp)));
-        n_.push_back(n);
+        long n = stol(ltrim(rtrim(n_temp)));
     }
-    
-    vector<int> n_orig = n_;
-    sort(n_.begin(), n_.end());
-    
-    long sum = 0;
-    vector<long> sums;
-    for (int i = 0; i < n_.size(); i++) {
-        
-        int n = n_[i];
-        int x = 3;
-        if(i > 0){
-            x = n_[i-1];
-            while(x % 3 != 0)
-                x++;
-        }
-        for(;x < n; x+=3){
-            sum+=x;
-        }
-        
-        x = 5;
-        if(i > 0){
-            x = n_[i-1];
-            while(x % 5 != 0)
-                x++;
-        }
-        for(;x < n; x+=5){
-            if(x % 3 != 0)
-                sum+=x;
-        }
-        
-        //cout << sum << endl;
-        sums.push_back(sum);
-    }
-    
-    for(int n : n_orig){
-        for(int i = 0; i < n_orig.size(); i++){
-            if(n == n_[i]){
-                cout << sums[i] << endl;
-                break;
-            }
-        }
-    }
-    
-    
-    return 0;
 
     return 0;
 }
-
