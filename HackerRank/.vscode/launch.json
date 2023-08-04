@@ -7,7 +7,7 @@
         "request": "launch",
         //"env": { "MYFILE": "${workspaceFolder}\\ProblemSolving\\Implementation\\NonDevisibleSubset" },
         "program": "${workspaceFolder}\\out.exe",
-        "args": ["<", "${workspaceFolder}\\Challanges\\ProjectEuler+\\LargestPrimeInput.txt"],
+        "args": ["<", "${workspaceFolder}\\Challanges\\ProjectEuler+\\04LargestPalindromeProductInput.txt"],
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}",
         "environment": [],

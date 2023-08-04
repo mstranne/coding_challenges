@@ -1,4 +1,4 @@
-//https://www.hackerrank.com/contests/projecteuler/challenges/euler003/problem?isFullScreen=true
+//https://www.hackerrank.com/contests/projecteuler/challenges/euler004/problem?isFullScreen=true
 
 #include <string>
 #include <vector>
@@ -55,7 +55,7 @@ int main()
         string n_temp;
         getline(cin, n_temp);
 
-        long n = stol(ltrim(rtrim(n_temp)));
+        int n = stoi(ltrim(rtrim(n_temp)));
     }
 
     return 0;
