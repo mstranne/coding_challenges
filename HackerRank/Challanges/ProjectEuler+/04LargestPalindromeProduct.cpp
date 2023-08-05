@@ -43,6 +43,64 @@ vector<string> split(const string &str) {
     return tokens;
 }
 
+bool isPalindrome(int n){
+    int temp=n; 
+    int sum = 0,r=0;   
+    while(n>0)    
+    {    
+        r=n%10;    
+        sum=(sum*10)+r;    
+        n=n/10;    
+    }    
+    if(temp==sum)    
+        return true;  
+    return false;  
+}
+
+inline bool is3Digit(int n) {
+    return (99 < n && n < 1000);
+}
+
+bool isProdOf3DigitNums(int n){
+    int orig = n;
+    vector<int> prims;
+
+    while(n % 2 == 0){
+        n/=2;
+        int len = prims.size();
+        for(int i = 0; i < len;i++){
+            if(prims[i]*2 < 1000)
+                prims.push_back(prims[i]*2);
+        }
+        prims.push_back(2);
+    }
+
+    int prime = 3;
+    while(n != prime){
+        if(n % prime == 0){
+            n /= prime;
+
+            int len = prims.size();
+            for(int i = 0; i < len;i++){
+                if(prims[i]*prime < 1000)
+                    prims.push_back(prims[i]*prime);
+            }
+            prims.push_back(prime);
+
+            if(prime > 999)
+                break;
+        }
+        else
+            prime+=2;
+    }
+    
+    for(int i = 0; i < prims.size();i++){
+        if(is3Digit(prims[i]) && is3Digit(orig / prims[i]))
+            return true;
+    }
+
+    return false;
+}
 
 int main()
 {
@@ -56,6 +114,20 @@ int main()
         getline(cin, n_temp);
 
         int n = stoi(ltrim(rtrim(n_temp)));
+
+        // A palindromic number reads the same both ways.
+
+        while(n >= 101101){
+            if(isPalindrome(n)){
+                if(isProdOf3DigitNums(n)){
+                    cout << n << endl;
+                    break;
+                }
+            }
+            n--;
+        }
+        
+
     }
 
     return 0;
