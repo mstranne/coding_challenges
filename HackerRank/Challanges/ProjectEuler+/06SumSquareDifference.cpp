@@ -1,4 +1,4 @@
-//https://www.hackerrank.com/contests/projecteuler/challenges/euler005/problem?isFullScreen=true
+//https://www.hackerrank.com/contests/projecteuler/challenges/euler006/problem?isFullScreen=true
 
 #include <string>
 #include <vector>
@@ -43,44 +43,6 @@ vector<string> split(const string &str) {
     return tokens;
 }
 
-bool isValid(long num, int n) {
-    for(int i = 2; i <= n; i++){
-        if(num % i != 0){
-            return false;
-        }
-    }
-    return true;
-}
-
-//TODO Timeou problemo
-void getSmallestMultiple(int n){
-    vector<long> pos;
-    long last = 1;
-    for(int i = 2; i <= n; i++)
-        last *= i;
-    pos.push_back(last);
-
-    do {
-        last = pos.back(); 
-        while(pos.back() == last)
-            pos.pop_back();
-
-        for(int i = 2; i <= n; i++) {            
-            if((last % i == 0) & isValid(last/i,n)){
-                pos.push_back(last/i);
-                //so kommen wieder viele tuplicate, muesste wieder als grey code implementierung gemacht werden?.
-            }
-        } 
-        if(pos.size() == 0)
-            pos.push_back(last);
-
-        //unique(pos.begin(), pos.end());
-        sort(pos.begin(), pos.end());
-    } while(pos.size() > 1);
-
-    cout << pos[0] << endl;
-}
-
 int main()
 {
     string t_temp;
@@ -94,8 +56,14 @@ int main()
 
         int n = stoi(ltrim(rtrim(n_temp)));
 
-        //smallest num dividable by 1, 2, ... n
-        getSmallestMultiple(n);
+        long erg = 0;
+        long toPow = 0;
+        for(int i = 1; i<=n;i++) {
+            erg+=pow(i,2);
+            toPow+=i;
+        }
+        erg = abs(erg-pow(toPow,2));
+        cout << erg << endl;
     }
 
     return 0;
