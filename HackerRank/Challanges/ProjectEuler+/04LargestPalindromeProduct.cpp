@@ -117,14 +117,13 @@ int main()
 
         // A palindromic number reads the same both ways.
 
-        while(n >= 101101){
+        while(n-- >= 101101){
             if(isPalindrome(n)){
                 if(isProdOf3DigitNums(n)){
                     cout << n << endl;
                     break;
                 }
             }
-            n--;
         }
         
 
