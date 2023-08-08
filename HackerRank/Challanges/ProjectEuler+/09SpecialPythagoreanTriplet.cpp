@@ -60,8 +60,25 @@ int main()
         // a < b < c where:
         // a^2 + b^2 = c^2
         // Given N, check if Triple with a + b + c = N
+        // find the one with max a*b*c 
+        // umformen und 1 in 2 einfuegen -> 2ab - 2aN - 2bN + N = 0
+        // lagrange mit 1/2 nebenbedingunen? max a*b*c unter 2ab - 2aN - 2bN + N = 0 / a < b < c wobei sich des ja eh von a^2+b^2=c^2 ableitet
 
-        
+        int max = -1;
+        for(int a = 1; a < n/3; a++){ //a is max 1/3-2 right?
+            if((a*n) % (a-n) == 0) {        // von 2ab - 2aN - 2bN + N = 0
+                //we got a possible int solution
+                int b = abs((n*(a-n/2))/(a-n));  // TODO wie arrive ich hier ?
+                int c = n - a - b;          // a + b + c = N
+                
+                if((a < b) && (b < c) && pow(a,2) + pow(b,2) == pow(c,2)){    //  a^2 + b^2 = c^2 also true ?
+                    if(max < a*b*c)
+                        max = a*b*c;
+                }
+            }
+        }
+
+        cout << max << endl;
     }
 
     return 0;
