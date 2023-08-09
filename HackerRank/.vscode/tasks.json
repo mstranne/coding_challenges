@@ -7,7 +7,7 @@
             "command": "C:\\msys64\\mingw64\\bin\\g++",
             "args": [
                 "-g",
-                "${workspaceFolder}\\Challanges\\ProjectEuler+\\09SpecialPythagoreanTriplet.cpp",
+                "${workspaceFolder}\\Challanges\\ProjectEuler+\\10SummationOfPrimes.cpp",
                 "-o",
                 "${workspaceFolder}\\out.exe"
             ],
