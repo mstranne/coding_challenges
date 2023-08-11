@@ -185,7 +185,7 @@ int main()
         
         if(curr_h > max_health) 
             max_health = curr_h;
-        else if(curr_h < min_health)
+        if(curr_h < min_health)
             min_health = curr_h;
     }
 

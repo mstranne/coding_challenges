@@ -7,7 +7,7 @@
         "request": "launch",
         //"env": { "MYFILE": "${workspaceFolder}\\ProblemSolving\\Implementation\\NonDevisibleSubset" },
         "program": "${workspaceFolder}\\out.exe",
-        "args": ["<", "${workspaceFolder}\\ProblemSolving\\Challanges\\DetermineDNAHealthInput.txt"],
+        "args": ["<", "${workspaceFolder}\\Challanges\\ProjectEuler+\\11LargestSumInGridInput.txt"],
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}",
         "environment": [],
