@@ -7,7 +7,9 @@
             "command": "C:\\msys64\\mingw64\\bin\\g++",
             "args": [
                 "-g",
-                "${workspaceFolder}\\Challanges\\ProjectEuler+\\11LargestSumInGrid.cpp",
+                //"${workspaceFolder}\\Challanges\\ProjectEuler+\\11LargestSumInGrid.cpp",
+                "${workspaceFolder}\\ProblemSolving\\Sorting\\InsertionSortAdvancedAnalysis.cpp",
+                "-I", "${workspaceFolder}\\",
                 "-o",
                 "${workspaceFolder}\\out.exe"
             ],
