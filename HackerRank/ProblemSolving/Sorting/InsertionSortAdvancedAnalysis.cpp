@@ -1,3 +1,5 @@
+//https://www.hackerrank.com/challenges/insertion-sort/problem
+
 #include "HelperFunctions/helpers.hpp"
 
 /*
@@ -7,8 +9,31 @@
  * The function accepts INTEGER_ARRAY arr as parameter.
  */
 
+//haelfte timeout
 int insertionSort(vector<int> arr) {
+    int swaps = 0;
+    map<int,int> stats; // map where we count up all prev to the current element
+    stats[arr[1]] = arr[0] < arr[1] ? 0 : 1;
+    for(int i = 2; i < arr.size(); i++){
+        // for(int j = 0; j < i; j++){
+        //     if(arr[j] > arr[i])
+        //         swaps++;
+        // }
+        auto it = stats.lower_bound(arr[i]); //first element not less than the given key
+        if(it == stats.end()){
+            // highest current elem, no swap
 
+        } else {
+            if(--it == stats.begin()){
+                //it is first elem
+            } else {
+                //it is last elem
+                
+            }
+        }
+
+    }
+    return swaps;
 }
 
 int main()
@@ -40,8 +65,9 @@ int main()
             arr[i] = arr_item;
         }
 
+        start_timer();
         int result = insertionSort(arr);
-
+        stop_timer(); // 18.1326ms-8.4059ms
         fout << result << "\n";
     }
 

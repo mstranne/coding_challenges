@@ -7,6 +7,7 @@
 #include <valarray> 
 #include <map>
 #include <memory>
+#include <chrono>
 
 using namespace std;
 
@@ -40,4 +41,20 @@ vector<string> split(const string &str) {
     tokens.push_back(str.substr(start));
 
     return tokens;
+}
+
+using chrono::high_resolution_clock;
+using chrono::duration_cast;
+using chrono::duration;
+using chrono::milliseconds;
+auto t1 = high_resolution_clock::now();
+
+void start_timer(){
+    t1 = high_resolution_clock::now();
+}
+
+void stop_timer(){
+    auto t2 = high_resolution_clock::now();
+    duration<double, milli> ms_double = t2 - t1;
+    cout << ms_double.count() << "ms\n";
 }
