@@ -12,26 +12,40 @@
 //haelfte timeout
 int insertionSort(vector<int> arr) {
     int swaps = 0;
-    map<int,int> stats; // map where we count up all prev to the current element
-    stats[arr[1]] = arr[0] < arr[1] ? 0 : 1;
-    for(int i = 2; i < arr.size(); i++){
+
+    // key = array val; val = num elems of value arr[i] + all elem that are greater
+    map<int,int> stats; // map where we count up all prev to the current element also anz an elems, net swaps
+    //stats[arr[1]] = arr[0] < arr[1] ? 0 : 1;
+    
+    stats[arr[0]] = 1; 
+    
+    for(int i = 1; i < arr.size(); i++){
         // for(int j = 0; j < i; j++){
         //     if(arr[j] > arr[i])
         //         swaps++;
         // }
-        auto it = stats.lower_bound(arr[i]); //first element not less than the given key
+        auto it = stats.lower_bound(arr[i]); //first element not less than the given key also >=
+        // it >= arr[i]
         if(it == stats.end()){
-            // highest current elem, no swap
-
-        } else {
-            if(--it == stats.begin()){
-                //it is first elem
-            } else {
-                //it is last elem
-                
-            }
+            //last one no need to swap
+            stats[arr[i]] = 1;  //doch 1 passt
+            it--;
+        }else if(it->first == arr[i]){
+              stats[arr[i]] += 1;   //des passt
+              auto itNext = next(it,1);
+              if(itNext != stats.end())
+                swaps += itNext->second;
+        } else{
+            swaps += it->second;
+            stats[arr[i]] = it->second;// + 1;      //hier kann ich genau des prev setzen
         }
 
+        //it--;
+        while(it-- != stats.begin()){
+            it->second += 1;
+            //it--;
+        }
+    
     }
     return swaps;
 }
@@ -69,9 +83,16 @@ int main()
         int result = insertionSort(arr);
         stop_timer(); // 18.1326ms-8.4059ms
         fout << result << "\n";
+        cout << result << "\n";
     }
 
     fout.close();
-
+    /*
+    233522831
+    128027785
+    7351907
+    3203642
+    839080835
+    */
     return 0;
 }
