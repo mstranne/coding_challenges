@@ -7,8 +7,8 @@
             "command": "C:\\msys64\\mingw64\\bin\\g++",
             "args": [
                 "-g",
-                //"${workspaceFolder}\\Challanges\\ProjectEuler+\\11LargestSumInGrid.cpp",
-                "${workspaceFolder}\\ProblemSolving\\Sorting\\InsertionSortAdvancedAnalysis.cpp",
+                "${workspaceFolder}\\Challanges\\ProjectEuler+\\12HighlyDivisibleTriangularNumber.cpp",
+                //"${workspaceFolder}\\ProblemSolving\\Sorting\\InsertionSortAdvancedAnalysis.cpp",
                 //"${workspaceFolder}\\ProblemSolving\\Implementation\\RemoveDipsLinkedList.cpp",
                 "-I", "${workspaceFolder}\\",
                 "-o",
