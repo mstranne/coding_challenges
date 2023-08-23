@@ -1,66 +1,67 @@
 //https://www.hackerrank.com/contests/projecteuler/challenges/euler012/problem?isFullScreen=true
 #include "HelperFunctions/helpers.hpp"
 
+
 int NumOfDevisors(int n){
-    if(n == 1)
-        return 1;
-    
-    int num = 2;
-    for(int i = 2; i < n; i++){
-        if(n % i == 0)
-            num++;
-    }
-    return num;
-
-    if(n == 1)
-        return 1;
-    if(n < 4)
-        return 2;
-
-    //int num = 2;
-    while(n % 2 == 0){
-        n/=2;
-        num++;
-    }
-    if(n == 1)
-        return num;
-
-    long prime = 3;
-    while(n != prime){
-        if(n % prime == 0){
-            n /= prime;
-            num++;
+   int cnt = 0;
+    for (int i = 1; i <= sqrt(n); i++) {
+        if (n % i == 0) {
+            // If divisors are equal,
+            // count only one
+            if (n / i == i)
+                cnt++;
+ 
+            else // Otherwise count both
+                cnt = cnt + 2;
         }
-        else
-            prime+=2;
     }
-    return num;
+    return cnt;
 }
 
-//timeout
 int main() {
     
     int anz;
     cin >> anz;
-
+    vector<int> input;
+    vector<int> res;
+    vector<int> orig_input;
     for(int idx = 0; idx < anz; idx++){
         int n = 0;
         cin >> n;
+        input.push_back(n);
+        orig_input.push_back(n);
+    }
 
-        
-        
-        int i = 0;
-        int trian = 0;
-        while(++i){
-            trian += i;
-            int num = NumOfDevisors(trian);
+    sort(input.begin(),input.end());
 
-            if(num > n){
-                cout << trian << endl;
+    auto n_it = input.begin();
+    int i = 0;
+    int trian = 0;
+    while(++i){
+        trian += i;
+        int num = NumOfDevisors(trian);
+
+        while(num > *n_it){
+            //cout << trian << endl;
+            res.push_back(trian);
+            n_it++;
+            if(n_it == input.end()){
+                break;
+            }
+        }    
+        if(n_it == input.end()){
+            break;
+        }
+    }
+
+    for(i = 0; i < anz; i++){
+        for (int j = 0; j < anz; j++)
+        {
+            if(orig_input[i] == input[j]){
+                cout << res[j] << endl;
                 break;
             }
         }
-        
     }
 
     return 0;
