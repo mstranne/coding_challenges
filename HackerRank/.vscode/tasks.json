@@ -7,7 +7,7 @@
             "command": "C:\\msys64\\mingw64\\bin\\g++",
             "args": [
                 "-g",
-                "${workspaceFolder}\\Challanges\\ProjectEuler+\\13LargeSum.cpp",
+                "${workspaceFolder}\\Challanges\\ProjectEuler+\\14LongestCollatzSequence.cpp",
                 //"${workspaceFolder}\\ProblemSolving\\Sorting\\InsertionSortAdvancedAnalysis.cpp",
                 //"${workspaceFolder}\\ProblemSolving\\Implementation\\RemoveDipsLinkedList.cpp",
                 "-I", "${workspaceFolder}\\",
