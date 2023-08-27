@@ -9,7 +9,7 @@
         "program": "${workspaceFolder}\\out.exe",
         //"args": ["<", "${workspaceFolder}\\Challanges\\ProjectEuler+\\14LongestCollatzSequenceInput.txt"],
         //"args": ["<", "${workspaceFolder}\\ProblemSolving\\Sorting\\InsertionSortAdvancedAnalysisInput.txt"],
-        "args": ["<", "${workspaceFolder}\\ProblemSolving\\Implementation\\AbsolutePermutationInput.txt"],
+        "args": ["<", "${workspaceFolder}\\ProblemSolving\\Implementation\\AlmostSortedInput.txt"],
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}",
         "environment": [],

@@ -9,7 +9,7 @@
                 "-g",
                 //"${workspaceFolder}\\Challanges\\ProjectEuler+\\14LongestCollatzSequence.cpp",
                 //"${workspaceFolder}\\ProblemSolving\\Sorting\\InsertionSortAdvancedAnalysis.cpp",
-                "${workspaceFolder}\\ProblemSolving\\Implementation\\AbsolutePermutation.cpp",
+                "${workspaceFolder}\\ProblemSolving\\Implementation\\AlmostSorted.cpp",
                 "-I", "${workspaceFolder}\\",
                 "-o",
                 "${workspaceFolder}\\out.exe"
