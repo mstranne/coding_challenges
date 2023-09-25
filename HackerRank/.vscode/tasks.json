@@ -4,15 +4,18 @@
         {
             "type": "shell",
             "label": "C/C++: g++ build active file",
-            "command": "C:\\msys64\\mingw64\\bin\\g++",
+            //"command": "C:\\msys64\\mingw64\\bin\\g++",
+            "command": "/usr/bin/g++",
             "args": [
                 "-g",
                 //"${workspaceFolder}\\Challanges\\ProjectEuler+\\14LongestCollatzSequence.cpp",
                 //"${workspaceFolder}\\ProblemSolving\\Sorting\\InsertionSortAdvancedAnalysis.cpp",
-                "${workspaceFolder}\\ProblemSolving\\Implementation\\AlmostSorted.cpp",
-                "-I", "${workspaceFolder}\\",
+                //"${workspaceFolder}\\ProblemSolving\\Implementation\\AlmostSorted.cpp",
+                "${workspaceFolder}/Mathematics/Combinatorics/SherlockAndPairs.cpp",
+                "-I", "${workspaceFolder}/",
                 "-o",
-                "${workspaceFolder}\\out.exe"
+                //"${workspaceFolder}\\out.exe"
+                "${workspaceFolder}/out"
             ],
             "options": {
                 //"cwd": "/usr/bin"
