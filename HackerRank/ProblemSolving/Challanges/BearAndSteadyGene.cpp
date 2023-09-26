@@ -24,7 +24,6 @@ vector<string> split(const string &);
 
 int steadyGene(string gene) {
     int min_sub = 0;
-
     return min_sub;
 }
 
