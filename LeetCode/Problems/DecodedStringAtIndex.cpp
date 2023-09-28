@@ -4,40 +4,54 @@
 
 // memory limit exeeded, so look 4 a solution where we do not write the whole string ? 
 string decodeAtIndex(string s, int k) {
-    stringstream ss;
-    int k_ = k;
-    
-    for(char c : s) {
+    int tape_size = 0;
+    int i = 0;
+    do {
+        char c = s[i];
         if('a' <= c && c <= 'z')  {  //is it letter ?
-            //ss << c;
-            k--;
+            tape_size++;
         }
         else {                      // its a digit !!
             int d = char_to_int(c);
-
-            string repeat = ss.str();
-            while(--d > 0 && k >= 0){
-                //ss << repeat;
-                k-=repeat.size();
-            }
+            tape_size *= d;
         }
+        if(tape_size >= k)
+            break;
 
-        //cout << ss.width() << endl;
-        if(k <= 0){
-            string back = ss.str();
-            return back.substr(k_-1, 1);
+    } while(i++ < s.size());
+
+    k--;
+    while(k >= 0 && i >= 0){
+        int idx = i;
+        if(k < i){
+            idx = k;
+        }  
+        char c = s[idx];
+        if('a' <= c && c <= 'z')  {  //is it letter ?
+            //if(idx == k)
+            return s.substr(idx,1);
+            
+            k--;
+            tape_size--;
         }
+        else {
+            int d = char_to_int(c);
+            assert(tape_size % d == 0);
+            int repeads = tape_size/d;
+            tape_size-=repeads*(d-1);
+            k = k % repeads;
+        }
+        i--;
     }
 
-    assert("should never get here");
-
+    return "should not get here";
 }
 
 int main() {
 
-    string s_in = "cpmxv8ewnfk3xxcilcmm68d2ygc88daomywc3imncfjgtwj8nrxjtwhiem5nzqnicxzo248g52y72v3yujqpvqcssrofd99lkovg";
-    int k = 480551547;
-    cout << decodeAtIndex(s_in, k) << endl;
+    string s_in = "vk6u5xhq9v";
+    int k = 554;
+    cout << decodeAtIndex(s_in, k) << endl; // should be x
 
     return 0;
 }
