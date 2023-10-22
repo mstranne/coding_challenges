@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Windows",
+            "includePath": [
+                "${workspaceFolder}/**",
+                //"C:\\msys64\\ucrt64\\include"
+                "C:\\msys64\\ucrt64\\include\\c++\\13.1.0"
+                //"C:\\msys64\\ucrt64\\include\\c++\\12.1.0\\x86_64-w64-mingw32\\"
+                //"C:\\msys64\\ucrt64\\lib\\gcc\\x86_64-w64-mingw32\\12.1.0\\include"
+            ],
+            "defines": [],
+            "compilerPath": "C:\\msys64\\ucrt64",
+            //"compilerPath":"/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++20"
+            //"intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
